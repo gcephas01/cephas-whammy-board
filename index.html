@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr. Cephas' Press Your Luck</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- =========================
+     GAME SETUP SCREEN
+     ========================= -->
+
+<section id="setupScreen"
+         class="setup-screen">
+
+    <div class="setup-box">
+
+        <div class="setup-kicker">
+            MR. CEPHAS'
+        </div>
+
+        <h1>PRESS YOUR LUCK</h1>
+
+        <div class="setup-section">
+
+            <div class="setup-label">
+                NUMBER OF TEAMS
+            </div>
+
+            <div class="team-count-buttons">
+
+                <button class="team-count active"
+                        data-count="4">
+                    4
+                </button>
+
+                <button class="team-count"
+                        data-count="3">
+                    3
+                </button>
+
+                <button class="team-count"
+                        data-count="2">
+                    2
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="setup-section">
+
+            <div class="setup-label">
+                TEAM NAMES
+            </div>
+
+            <div id="teamNameInputs"
+                 class="team-name-inputs">
+
+                <input type="text"
+                       value="TEAM 1"
+                       data-team="0">
+
+                <input type="text"
+                       value="TEAM 2"
+                       data-team="1">
+
+                <input type="text"
+                       value="TEAM 3"
+                       data-team="2">
+
+                <input type="text"
+                       value="TEAM 4"
+                       data-team="3">
+
+            </div>
+
+        </div>
+
+
+        <button id="startGameButton"
+                class="start-game-button">
+
+            START GAME
+
+        </button>
+
+    </div>
+
+</section>
+    <!-- =========================
+     EARN YOUR SPINS SCREEN
+     ========================= -->
+
+<section id="earnSpinsScreen"
+         class="earn-spins-screen hidden">
+
+    <div class="earn-header">
+
+        <div class="earn-kicker">
+            ROUND 1
+        </div>
+
+        <h1>
+            EARN YOUR SPINS
+        </h1>
+
+        <p>
+            KNOWLEDGE EARNS OPPORTUNITY.
+        </p>
+
+    </div>
+
+
+    <div id="earnTeams"
+         class="earn-teams">
+
+        <!-- Team cards are created by JavaScript -->
+
+    </div>
+
+
+    <div class="earn-actions">
+
+        <button id="randomChallengeButton"
+                class="challenge-button">
+
+            ⚡ RANDOM CHALLENGE
+
+        </button>
+
+
+        <button id="goToBigBoard"
+                class="big-board-button">
+
+            GO TO BIG BOARD →
+
+        </button>
+
+    </div>
+
+</section>
+<div id="bigBoardScreen"
+     class="big-board-screen hidden">
+    <main class="game">
+
+        <header class="game-header">
+            <div class="eyebrow">MR. CEPHAS' CLASSROOM REVIEW</div>
+            <h1>PRESS YOUR LUCK</h1>
+            <div class="tagline">BIG POINTS • BIG SPINS • NO WHAMMIES</div>
+        </header>
+
+        <section class="board">
+
+            <!-- TOP ROW -->
+            <div class="space s1">500</div>
+            <div class="space s2">750</div>
+            <div class="space s3">1000</div>
+            <div class="space s4">+1 SPIN</div>
+            <div class="space s5">WHAMMY!</div>
+
+            <!-- LEFT SIDE -->
+            <div class="space s16">400</div>
+            <div class="space s15">DOUBLE</div>
+            <div class="space s14">600</div>
+
+            <!-- CENTER -->
+            <div class="center-panel">
+
+                <div class="turn-label">CURRENT TEAM</div>
+
+                <div class="team-name" id="currentTeamName">
+                 TEAM 1
+                </div>
+
+                <div class="score-label">SCORE</div>
+
+               <div class="score" id="currentScore">
+                0
+                </div>
+
+                <div class="spin-area">
+                <span>SPINS</span>
+                <strong id="currentSpins">5</strong>
+                </div>
+
+                <button id="stopButton">
+                    STOP!
+                </button>
+
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="space s6">800</div>
+            <div class="space s7">HISTORY<br>BONUS</div>
+            <div class="space s8">300</div>
+
+            <!-- BOTTOM ROW -->
+            <div class="space s13">+500<br>+ SPIN</div>
+            <div class="space s12">WHAMMY!</div>
+            <div class="space s11">900</div>
+            <div class="space s10">STEAL<br>500</div>
+            <div class="space s9">700</div>
+
+        </section>
+
+<section class="teams">
+
+    <button class="team active-team" data-team="0">
+        <span>TEAM 1</span>
+        <strong>0</strong>
+        <small>5 SPINS</small>
+        <div class="whammy-counter">○ ○ ○ ○</div>
+    </button>
+
+    <button class="team" data-team="1">
+        <span>TEAM 2</span>
+        <strong>0</strong>
+        <small>5 SPINS</small>
+        <div class="whammy-counter">○ ○ ○ ○</div>
+    </button>
+
+    <button class="team" data-team="2">
+        <span>TEAM 3</span>
+        <strong>0</strong>
+        <small>5 SPINS</small>
+        <div class="whammy-counter">○ ○ ○ ○</div>
+    </button>
+
+    <button class="team" data-team="3">
+        <span>TEAM 4</span>
+        <strong>0</strong>
+        <small>5 SPINS</small>
+        <div class="whammy-counter">○ ○ ○ ○</div>
+    </button>
+
+</section>
+
+<section class="teacher-controls">
+
+    <button id="teacherToggle">
+        ⚙ TEACHER CONTROLS
+    </button>
+
+    <div id="teacherPanel" class="teacher-panel hidden">
+
+        <div class="control-title">
+            CURRENT TEAM CONTROLS
+        </div>
+
+        <div class="control-row">
+
+            <button id="removeSpin">
+                − SPIN
+            </button>
+
+            <button id="addSpin">
+                + SPIN
+            </button>
+
+        </div>
+
+        <div class="control-row">
+
+            <button id="removePoints">
+                − 100
+            </button>
+
+            <button id="addPoints">
+                + 100
+            </button>
+
+        </div>
+        <div class="control-row">
+    <button id="returnToSetup"
+            class="return-setup-button">
+        ↩ RETURN TO SETUP
+    </button>
+</div>
+
+    </div>
+
+</section>
+
+<div id="stealOverlay" class="steal-overlay hidden">
+
+    <div class="steal-box">
+
+        <div class="steal-title">
+            STEAL 500!
+        </div>
+
+        <div class="steal-instruction">
+            CHOOSE YOUR TARGET
+        </div>
+
+        <div id="stealTargets"
+             class="steal-targets">
+        </div>
+
+        <button id="cancelSteal">
+            CANCEL
+        </button>
+
+    </div>
+
+</div>
+</div>
+
+<!-- =========================
+     RANDOM CHALLENGE OVERLAY
+     ========================= -->
+
+<div id="challengeOverlay"
+     class="challenge-overlay hidden">
+
+    <div class="challenge-box">
+
+        <div class="challenge-kicker">
+            ⚡ RANDOM CHALLENGE ⚡
+        </div>
+
+        <div id="challengeTitle"
+             class="challenge-title">
+            DOUBLE DOWN
+        </div>
+
+        <div id="challengeDescription"
+             class="challenge-description">
+            The next question is worth 2 spins.
+        </div>
+
+        <button id="closeChallenge"
+                class="close-challenge">
+            LET'S PLAY
+        </button>
+
+    </div>
+
+</div>
+<!-- =========================
+     HISTORY BONUS OVERLAY
+     ========================= -->
+
+<div id="historyBonusOverlay"
+     class="history-bonus-overlay hidden">
+
+    <div class="history-bonus-box">
+
+        <div class="history-bonus-title">
+            HISTORY BONUS!
+        </div>
+
+        <div class="history-bonus-subtitle">
+            CHALLENGE QUESTION
+        </div>
+
+        <div class="history-bonus-instruction">
+            CORRECT ANSWER = +2 SPINS
+        </div>
+
+        <div class="history-bonus-buttons">
+
+            <button id="historyIncorrect"
+                    class="history-incorrect">
+                ✕ INCORRECT
+            </button>
+
+            <button id="historyCorrect"
+                    class="history-correct">
+                ✓ CORRECT
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="whammyOverlay" class="whammy-overlay hidden">
+
+    <div class="whammy-content">
+
+        <div class="whammy-explosion">
+            💥
+        </div>
+
+        <div class="whammy-title">
+            WHAMMY!
+        </div>
+
+        <div id="whammyMessage" class="whammy-message">
+            YOUR POINTS ARE HISTORY!
+        </div>
+
+        <div class="whammy-score-label">
+            SCORE
+        </div>
+
+        <div id="whammyScore" class="whammy-score">
+            0
+        </div>
+
+        <div id="whammyCountDisplay"
+             class="whammy-count-display">
+            ○ ○ ○ ○
+        </div>
+
+        <button id="returnButton">
+            RETURN TO BOARD
+        </button>
+
+    </div>
+
+</div>
+
+
+    </main>
+
+    <script src="game.js"></script>
+
+</body>
+</html>
